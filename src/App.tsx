@@ -1,77 +1,32 @@
-import { useCallback } from "react";
-import { SeatMap } from "./components/SeatMap";
-import { SelectionSummary } from "./components/SelectionSummary";
-import { HoldCountdown } from "./components/HoldCountdown";
-import { CheckoutBar } from "./components/CheckoutBar";
-import { useSeatSelection } from "./lib/useSeatSelection";
-import { isConfigured } from "./lib/config";
+import { NavLink, Outlet } from "react-router-dom";
+
+const routes = [
+  { to: "/", label: "Single event", end: true },
+  { to: "/seat-picker", label: "Seat picker", end: false },
+  { to: "/season", label: "Season tickets", end: false },
+  { to: "/events", label: "Multiple events", end: false },
+  { to: "/best-available", label: "Best available", end: false },
+  { to: "/control-room", label: "Control room", end: false },
+];
 
 export default function App() {
-  const {
-    chartRef,
-    seats,
-    setSeats,
-    hold,
-    setHold,
-    total,
-    busy,
-    error,
-    setError,
-    holdSelection,
-    holdBestAvailable,
-    releaseHold,
-  } = useSeatSelection();
-
-  const handleExpired = useCallback(() => {
-    setHold(null);
-    setError("Your hold expired. Pick your seats again.");
-  }, [setHold, setError]);
-
   return (
-    <main className="page">
-      <header>
-        <h1>Grand Theatre</h1>
-        <p className="muted">Choose your seats, hold them, then continue to your own checkout.</p>
-      </header>
-
-      {isConfigured ? (
-        <div className="layout">
-          <section className="map-panel">
-            <SeatMap
-              ref={chartRef}
-              onSelectionChange={setSeats}
-              onHold={setHold}
-              onHoldExpired={handleExpired}
-              onError={setError}
-            />
-          </section>
-
-          <aside className="cart-panel">
-            <h2>Your seats</h2>
-            <SelectionSummary seats={seats} total={total} />
-            {hold ? <HoldCountdown expiresAt={hold.expiresAt} onExpired={handleExpired} /> : null}
-            {error ? <p className="error">{error}</p> : null}
-            <CheckoutBar
-              hold={hold}
-              seatCount={seats.length}
-              busy={busy}
-              onHoldSelection={holdSelection}
-              onBestAvailable={() => holdBestAvailable(2)}
-              onRelease={releaseHold}
-            />
-            {hold ? <p className="muted small">Hold id: {hold.holdId}</p> : null}
-          </aside>
-        </div>
-      ) : (
-        <section className="setup" data-testid="setup-notice">
-          <h2>Add your event keys</h2>
-          <p>
-            Copy <code>.env.example</code> to <code>.env.local</code>, then set{" "}
-            <code>VITE_SEATLAYER_EVENT_KEY</code> and <code>VITE_SEATLAYER_PUBLIC_KEY</code>, then
-            restart the dev server.
-          </p>
-        </section>
-      )}
-    </main>
+    <div className="page">
+      <nav className="nav" aria-label="Examples">
+        {routes.map((route) => (
+          <NavLink
+            key={route.to}
+            to={route.to}
+            end={route.end}
+            className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")}
+          >
+            {route.label}
+          </NavLink>
+        ))}
+      </nav>
+      <main>
+        <Outlet />
+      </main>
+    </div>
   );
 }
