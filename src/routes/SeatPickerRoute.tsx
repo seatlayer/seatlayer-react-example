@@ -3,7 +3,7 @@ import { SeatPicker } from "@seatlayer/react";
 import type { CheckoutHandoff, HoldResult, SeatPickerHandle } from "@seatlayer/react";
 import { RouteIntro } from "../components/RouteIntro";
 import { SetupNotice } from "../components/SetupNotice";
-import { formatUsd } from "../lib/money";
+import { formatMoney } from "../lib/money";
 import { currency, eventKey, isConfigured, publicKey } from "../lib/config";
 
 /**
@@ -59,13 +59,13 @@ export function SeatPickerRoute() {
                   {handoff.lineItems.map((line) => (
                     <li key={line.label}>
                       <span>{line.displayLabel ?? line.label}</span>
-                      <span className="price">{formatUsd(line.unitPrice * line.quantity)}</span>
+                      <span className="price">{formatMoney(line.unitPrice * line.quantity, line.currency)}</span>
                     </li>
                   ))}
                 </ul>
                 <p className="total">
                   <span>Total</span>
-                  <span className="price">{formatUsd(handoff.total)}</span>
+                  <span className="price">{formatMoney(handoff.total, handoff.currency)}</span>
                 </p>
                 <p className="muted small">Hold id: {handoff.holdId}</p>
                 <p className="muted">
