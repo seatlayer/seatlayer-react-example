@@ -256,9 +256,22 @@ the `hosted` environment in `wrangler.jsonc`, which sets the Worker name
 `seatlayer-examples-react` and the custom domain:
 
 ```sh
+VITE_SEATLAYER_PUBLIC_KEY=pk_test_e5933c35b56d4f9997f89d50edca3aa3e610c6ff92c8480f \
+VITE_SEATLAYER_EVENT_KEY=ev_dd43d9250d37406a8d630158d57f1db6 \
+VITE_SEATLAYER_EVENT_KEY_2=ev_38327c4f7d8c433281fa330033f6376b \
+VITE_SEATLAYER_EVENT_KEY_3=ev_73621397e3c64d398d24e1b84f08c2d3 \
+VITE_SEATLAYER_SEASON_KEY=sea_030bee1677b247c1957c0f372d92d613 \
+VITE_SEATLAYER_CURRENCY=EUR \
 npm run build
+```
+
+```sh
 npx wrangler deploy --env hosted
 ```
+
+These are the public demo keys (a test event, safe in browser code). Vite writes
+the `VITE_` values into the build, so they must be set when you run
+`npm run build`.
 
 You do not need this environment for your own copy.
 
