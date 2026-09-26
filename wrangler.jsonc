@@ -1,0 +1,12 @@
+{
+  // Hosted copy of this example on Cloudflare Workers static assets.
+  // Build first (npm run build), then deploy with: npx wrangler deploy
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "seatlayer-examples-react",
+  "compatibility_date": "2026-09-01",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "single-page-application"
+  },
+  "routes": [{ "pattern": "examples-react.seatlayer.io", "custom_domain": true }]
+}
