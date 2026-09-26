@@ -231,15 +231,20 @@ countdown.
 
 ## Hosting on Cloudflare
 
-The build output in `dist` is a static site, so it runs on Cloudflare Pages as
-it is. Use `npm run build` as the build command and `dist` as the output
-directory. Set the `VITE_` variables as build variables, because Vite writes
-them into the bundle at build time.
+The build output in `dist` is a static site, served on Cloudflare Workers as
+static assets. `wrangler.jsonc` sets it up:
 
-The routes are handled in the browser by React Router. Pages serves
-`index.html` for any path that is not a file when the site has no top level
-`404.html`, so deep links such as `/seat-picker` work without a `_redirects`
-file.
+```sh
+npm run build
+npx wrangler deploy
+```
+
+Set the `VITE_` variables before `npm run build`, because Vite writes them into
+the bundle at build time.
+
+The routes are handled in the browser by React Router. `wrangler.jsonc` sets
+`not_found_handling` to `single-page-application`, so a deep link such as
+`/seat-picker` serves `index.html` and the app takes it from there.
 
 Add `?embed=1` to any route to hide the navigation and the route heading, so
 the example sits cleanly in an iframe.
