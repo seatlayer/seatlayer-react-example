@@ -246,6 +246,22 @@ The routes are handled in the browser by React Router. `wrangler.jsonc` sets
 `not_found_handling` to `single-page-application`, so a deep link such as
 `/seat-picker` serves `index.html` and the app takes it from there.
 
+`npx wrangler deploy` creates your own Worker named `seatlayer-react-example`,
+with no custom domain. Rename it in `wrangler.jsonc` if you like.
+
+### Hosting our copy
+
+The live demo at examples-react.seatlayer.io is this repository deployed with
+the `hosted` environment in `wrangler.jsonc`, which sets the Worker name
+`seatlayer-examples-react` and the custom domain:
+
+```sh
+npm run build
+npx wrangler deploy --env hosted
+```
+
+You do not need this environment for your own copy.
+
 Add `?embed=1` to any route to hide the navigation and the route heading, so
 the example sits cleanly in an iframe.
 
