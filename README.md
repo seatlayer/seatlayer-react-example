@@ -229,6 +229,26 @@ countdown.
 - [Server SDKs](https://docs.seatlayer.io/server-sdk/)
 - [seatlayer-sdk on GitHub](https://github.com/seatlayer/seatlayer-sdk)
 
+## Hosting on Cloudflare
+
+The build output in `dist` is a static site, so it runs on Cloudflare Pages as
+it is. Use `npm run build` as the build command and `dist` as the output
+directory. Set the `VITE_` variables as build variables, because Vite writes
+them into the bundle at build time.
+
+The routes are handled in the browser by React Router. Pages serves
+`index.html` for any path that is not a file when the site has no top level
+`404.html`, so deep links such as `/seat-picker` work without a `_redirects`
+file.
+
+Add `?embed=1` to any route to hide the navigation and the route heading, so
+the example sits cleanly in an iframe.
+
+CI builds every push. When the repository has `DEMO_EVENT_KEY` and
+`DEMO_PUBLIC_KEY` secrets (and optionally `DEMO_SEASON_KEY`), it also serves the
+build with `npm run preview` and loads every route with
+`scripts/check-routes.mjs`, failing on an HTTP error or a console error.
+
 ## License
 
 MIT. See [LICENSE](./LICENSE).

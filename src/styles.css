@@ -32,6 +32,16 @@ body {
   padding: 24px 16px 48px;
 }
 
+/* ?embed=1 drops the navigation and the route heading. See src/App.tsx. */
+.page.embed {
+  max-width: none;
+  padding: 0;
+}
+
+.page.embed .intro {
+  display: none;
+}
+
 h1 {
   font-size: 1.6rem;
   margin: 0 0 4px;

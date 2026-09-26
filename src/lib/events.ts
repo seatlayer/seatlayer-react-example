@@ -15,6 +15,6 @@ export interface EventOption {
 
 export const events: EventOption[] = [
   { key: eventKey, name: "Opening night" },
-  { key: import.meta.env.VITE_SEATLAYER_EVENT_KEY_2 ?? eventKey, name: "Saturday matinee" },
-  { key: import.meta.env.VITE_SEATLAYER_EVENT_KEY_3 ?? eventKey, name: "Closing night" },
+  { key: import.meta.env.VITE_SEATLAYER_EVENT_KEY_2 || eventKey, name: "Saturday matinee" },
+  { key: import.meta.env.VITE_SEATLAYER_EVENT_KEY_3 || eventKey, name: "Closing night" },
 ];
