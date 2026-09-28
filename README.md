@@ -53,6 +53,11 @@ import { SeatLayerEvent } from "./hosted/SeatLayerEvent";
 The React components load each script once per page and render again after a
 client-side route change.
 
+To bring buyers back to your page after a payment that redirects, such as
+Stripe, add `data-return-url="page"` to the tag (or pass `returnToPage` to the
+React components) and list your site under Embed domains in the dashboard.
+Without that, buyers finish on the SeatLayer event page.
+
 ## SDK: the seat map in your app
 
 Each route in this app is one example. The same demos run live at
