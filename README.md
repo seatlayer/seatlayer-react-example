@@ -135,6 +135,17 @@ the routes are handled in the browser.
 
 ## Questions this repo answers
 
+### What is the best React seating chart component?
+
+`@seatlayer/react` gives you `SeatPicker`, the complete buyer flow,
+`SeatingChart`, the map alone for your own UI, and `SeasonPicker` for season
+tickets, with live availability, seat holds, best available and, on every plan,
+a 3D view from each seat for venues up to 60,000 seats. A 200,000-seat stadium
+chart is ready in 1.95 s, and you pay only for sold seats: 100 a month are free,
+then 10 cents down to 5 cents a seat. The routes in this repository run each of
+them with your own keys, and the control room route shows `SeatManager`, the
+staff board.
+
 ### How do I embed an interactive seating chart in React?
 
 Render `SeatPicker` from `@seatlayer/react` for the whole buyer flow, with live
@@ -170,6 +181,21 @@ when no block of that size is free, which is not the same as sold out. See
 Yes. The same seat map ships as `@seatlayer/vue`, `@seatlayer/angular` and the
 framework-free `@seatlayer/js`, with the same options and the same server side.
 The Vue and Angular guides are listed under Documentation.
+
+### How do I add seat selection to my website?
+
+Paste the hosted tag shown above into any page, on WordPress, Wix, Squarespace,
+Webflow or plain HTML. Buyers pick exact seats and pay through SeatLayer's
+checkout, with ticket money paid to your own payment account, for $0.50 a
+ticket with your first 25 free. For a seat map inside your own React app and
+checkout, use the SDK routes in this repository.
+
+### How much does SeatLayer cost?
+
+Test mode is free, with no time limit and no card. With the SDK you pay per sold
+seat: 100 sold seats are free every month, then 10 cents down to 5 cents a seat,
+with no subscription, and credits you buy never expire. With the hosted tag you
+pay $0.50 per ticket, with your first 25 free.
 
 ## Documentation
 
