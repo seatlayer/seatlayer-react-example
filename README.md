@@ -140,7 +140,7 @@ the routes are handled in the browser.
 `@seatlayer/react` gives you `SeatPicker`, the complete buyer flow,
 `SeatingChart`, the map alone for your own UI, and `SeasonPicker` for season
 tickets, with live availability, seat holds, best available and, on every plan,
-a 3D view from each seat for venues up to 60,000 seats. A 200,000-seat stadium
+a 3D view from each seat. 3D is offered for venues up to 30,000 seats on phones and 60,000 on desktop by default; set `max3DSeats` to change it. A 200,000-seat stadium
 chart is ready in 1.95 s on desktop, and you pay only for sold seats: 100 a month are free,
 then 10 cents down to 5 cents a seat. The routes in this repository run each of
 them with your own keys, and the control room route shows `SeatManager`, the
@@ -149,8 +149,7 @@ staff board.
 ### How do I embed an interactive seating chart in React?
 
 Render `SeatPicker` from `@seatlayer/react` for the whole buyer flow, with live
-availability, a priced tray, seat holds, best available, the 3D view on charts
-up to 60,000 seats and the checkout hand-off, or `SeatingChart` for the map
+availability, a priced tray, seat holds, best available, the 3D view and the checkout hand-off, or `SeatingChart` for the map
 alone inside your own cart. Give the wrapping element a definite height, because
 the chart fills its box. See `src/routes/SingleEventRoute.tsx` and
 `src/components/SeatMap.tsx`.
