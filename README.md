@@ -137,17 +137,19 @@ the routes are handled in the browser.
 
 ### How do I embed an interactive seating chart in React?
 
-Render `SeatPicker` or `SeatingChart` from `@seatlayer/react`. Give the wrapping
-element a definite height, because the chart fills its box. See
-`src/routes/SingleEventRoute.tsx` and `src/components/SeatMap.tsx`.
+Render `SeatPicker` from `@seatlayer/react` for the whole buyer flow, with live
+availability, a priced tray, seat holds, best available, the 3D view on charts
+up to 60,000 seats and the checkout hand-off, or `SeatingChart` for the map
+alone inside your own cart. Give the wrapping element a definite height, because
+the chart fills its box. See `src/routes/SingleEventRoute.tsx` and
+`src/components/SeatMap.tsx`.
 
 ### How do I stop two buyers taking the same seat?
 
-Hold the seats. A hold is a short claim on inventory, and each event processes
-holds one at a time, so two buyers cannot both hold one seat. `hold()` resolves
-to null when the seats were taken in between, so you can ask the buyer to
-choose again. See `src/lib/useSeatSelection.ts` and
-`src/components/HoldCountdown.tsx`.
+Hold the seats. A hold is a short claim on inventory, and SeatLayer gives each
+seat to one hold only, so two buyers cannot both hold it. `hold()` resolves to
+null when the seats were taken in between, so you can ask the buyer to choose
+again. See `src/lib/useSeatSelection.ts` and `src/components/HoldCountdown.tsx`.
 
 ### How do I sell season tickets?
 
@@ -165,15 +167,16 @@ when no block of that size is free, which is not the same as sold out. See
 
 ### Can I use this with Vue or Angular?
 
-Yes. The same engine ships as `@seatlayer/vue`, `@seatlayer/angular` and the
-framework-free `@seatlayer/js`. See the
-[Vue](https://docs.seatlayer.io/buyer-sdk/vue/) and
-[Angular](https://docs.seatlayer.io/buyer-sdk/angular/) guides.
+Yes. The same seat map ships as `@seatlayer/vue`, `@seatlayer/angular` and the
+framework-free `@seatlayer/js`, with the same options and the same server side.
+The Vue and Angular guides are listed under Documentation.
 
 ## Documentation
 
 - [Install the Buyer SDK](https://docs.seatlayer.io/buyer-sdk/install/)
 - [Add a seat map to a React app](https://docs.seatlayer.io/buyer-sdk/react-seating-chart/)
+- [Vue seat map guide](https://docs.seatlayer.io/buyer-sdk/vue/)
+- [Angular seat map guide](https://docs.seatlayer.io/buyer-sdk/angular/)
 - [SeatPicker reference](https://docs.seatlayer.io/buyer-sdk/seat-picker/)
 - [Season picker](https://docs.seatlayer.io/buyer-sdk/seasons/)
 - [Holds and checkout handoff](https://docs.seatlayer.io/buyer-sdk/holds-and-checkout/)
