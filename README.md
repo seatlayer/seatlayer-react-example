@@ -179,7 +179,8 @@ when no block of that size is free, which is not the same as sold out. See
 ### Can I use this with Vue or Angular?
 
 Yes. The same seat map ships as `@seatlayer/vue`, `@seatlayer/angular` and the
-framework-free `@seatlayer/js`, with the same options and the same server side.
+framework-free `@seatlayer/js`, and the server side is the same. The
+options differ by package; check each package's guide.
 The Vue and Angular guides are listed under Documentation.
 
 ### How do I add seat selection to my website?
