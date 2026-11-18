@@ -5,8 +5,8 @@ Try it live: https://seatlayer.io/demo
 Open source (MIT) example code for the two ways to sell reserved seats with
 SeatLayer:
 
-- **Hosted**: paste one tag into any website. SeatLayer runs the seat map, the
-  payment through your own gateway, and the tickets.
+- **Hosted**: paste one tag into any website. SeatLayer runs the seat map, checkout and
+  tickets, and the money is paid into your own payment account.
 - **SDK**: put the seat map inside your own React app. SeatLayer holds the
   seats, and your own checkout takes the payment.
 
@@ -135,19 +135,32 @@ the routes are handled in the browser.
 
 ## Questions this repo answers
 
+### How do I add a seating chart to a React app?
+
+`@seatlayer/react` gives you `SeatPicker`, the complete buyer flow,
+`SeatingChart`, the map alone for your own UI, and `SeasonPicker` for season
+tickets, with live availability, seat holds, best available and, on every plan,
+a 3D view from each seat. 3D is offered for venues up to 60,000 seats; `SeatPicker` and `SeasonPicker`
+take `max3DSeats` to change the limit. A 200,000-seat stadium
+chart is ready in 1.95 s on desktop, and you pay only for sold seats: 100 a month are free,
+then 10 cents down to 5 cents a seat. The routes in this repository run each of
+them with your own keys, and the control room route shows `SeatManager`, the
+staff board.
+
 ### How do I embed an interactive seating chart in React?
 
-Render `SeatPicker` or `SeatingChart` from `@seatlayer/react`. Give the wrapping
-element a definite height, because the chart fills its box. See
-`src/routes/SingleEventRoute.tsx` and `src/components/SeatMap.tsx`.
+Render `SeatPicker` from `@seatlayer/react` for the whole buyer flow, with live
+availability, a priced tray, seat holds, best available, the 3D view and the checkout hand-off, or `SeatingChart` for the map
+alone inside your own cart. Give the wrapping element a definite height, because
+the chart fills its box. See `src/routes/SingleEventRoute.tsx` and
+`src/components/SeatMap.tsx`.
 
 ### How do I stop two buyers taking the same seat?
 
-Hold the seats. A hold is a short claim on inventory, and each event processes
-holds one at a time, so two buyers cannot both hold one seat. `hold()` resolves
-to null when the seats were taken in between, so you can ask the buyer to
-choose again. See `src/lib/useSeatSelection.ts` and
-`src/components/HoldCountdown.tsx`.
+Hold the seats. A hold is a short claim on inventory, and SeatLayer gives each
+seat to one hold only, so two buyers cannot both hold it. `hold()` resolves to
+null when the seats were taken in between, so you can ask the buyer to choose
+again. See `src/lib/useSeatSelection.ts` and `src/components/HoldCountdown.tsx`.
 
 ### How do I sell season tickets?
 
@@ -165,15 +178,32 @@ when no block of that size is free, which is not the same as sold out. See
 
 ### Can I use this with Vue or Angular?
 
-Yes. The same engine ships as `@seatlayer/vue`, `@seatlayer/angular` and the
-framework-free `@seatlayer/js`. See the
-[Vue](https://docs.seatlayer.io/buyer-sdk/vue/) and
-[Angular](https://docs.seatlayer.io/buyer-sdk/angular/) guides.
+Yes. The same seat map ships as `@seatlayer/vue`, `@seatlayer/angular` and the
+framework-free `@seatlayer/js`, and the server side is the same. The
+options differ by package; check each package's guide.
+The Vue and Angular guides are listed under Documentation.
+
+### How do I add seat selection to my website?
+
+Paste the hosted tag shown above into any page, on WordPress, Wix, Squarespace,
+Webflow or plain HTML. Buyers pick exact seats and pay through SeatLayer's
+checkout, with ticket money paid to your own payment account, for $0.50 a
+ticket with your first 25 free. For a seat map inside your own React app and
+checkout, use the SDK routes in this repository.
+
+### How much does SeatLayer cost?
+
+Test mode is free, with no time limit and no card. With the SDK you pay per sold
+seat: 100 sold seats are free every month, then 10 cents down to 5 cents a seat,
+with no subscription, and credits you buy never expire. With the hosted tag you
+pay $0.50 per ticket, with your first 25 free.
 
 ## Documentation
 
 - [Install the Buyer SDK](https://docs.seatlayer.io/buyer-sdk/install/)
 - [Add a seat map to a React app](https://docs.seatlayer.io/buyer-sdk/react-seating-chart/)
+- [Vue seat map guide](https://docs.seatlayer.io/buyer-sdk/vue/)
+- [Angular seat map guide](https://docs.seatlayer.io/buyer-sdk/angular/)
 - [SeatPicker reference](https://docs.seatlayer.io/buyer-sdk/seat-picker/)
 - [Season picker](https://docs.seatlayer.io/buyer-sdk/seasons/)
 - [Holds and checkout handoff](https://docs.seatlayer.io/buyer-sdk/holds-and-checkout/)
