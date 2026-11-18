@@ -5,8 +5,8 @@ Try it live: https://seatlayer.io/demo
 Open source (MIT) example code for the two ways to sell reserved seats with
 SeatLayer:
 
-- **Hosted**: paste one tag into any website. SeatLayer runs the seat map, the
-  payment through your own gateway, and the tickets.
+- **Hosted**: paste one tag into any website. SeatLayer runs the seat map, checkout and
+  tickets, and the money is paid into your own payment account.
 - **SDK**: put the seat map inside your own React app. SeatLayer holds the
   seats, and your own checkout takes the payment.
 
@@ -135,7 +135,7 @@ the routes are handled in the browser.
 
 ## Questions this repo answers
 
-### What is the best React seating chart component?
+### How do I add a seating chart to a React app?
 
 `@seatlayer/react` gives you `SeatPicker`, the complete buyer flow,
 `SeatingChart`, the map alone for your own UI, and `SeasonPicker` for season
