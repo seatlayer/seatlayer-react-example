@@ -64,16 +64,6 @@ export function SeasonRoute() {
               publicKey={publicKey}
               maxSelection={4}
               className="seatmap seatmap--season"
-              offer={{
-                eyebrow: "2027 membership",
-                priceLabel: "From $480",
-                compareAtPriceLabel: "From $600 bought separately",
-                savingsLabel: "Save $120",
-                priceNote:
-                  "The package price depends on your seats and is confirmed at checkout",
-                benefits: ["Priority entry", "Free ticket exchange", "Renewal priority"],
-                renewalLabel: "Same-seat renewal eligible",
-              }}
               onStatusChange={(next: SeasonStatusEvent) => {
                 setStatus(next.message);
                 if (next.kind === "ready") {
